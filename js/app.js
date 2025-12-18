@@ -393,21 +393,64 @@ Hints:
   accumulator.
 */
 
-// let totalYearsLived = 0;
+let totalYearsLived = 0;
 
-// // Complete the exercise in the space below:
+// Complete the exercise in the space below:
 
-// totalYearsLived = inventors.reduce(function (acc, num){
-//     const lifespan = inventors.forEach((inventor) => {
-//         let inventorAge = (inventor.passed - inventor.year);
-        
-//     });
-//     console.log(lifespan);
-    
-//     return acc + lifespan;
-// }, 0)
+totalYearsLived = inventors.reduce(function (accumulator, inventor) {
+  return accumulator + (inventor.passed - inventor.year);
+}, 0);
+
+// function getAge(accumulator, inventor) {
+//   return accumulator + (inventor.passed - inventor.year);
+// }
+
+// Check your work:
+console.log('Level Up 1 my result: ', totalYearsLived);
+console.log('Level Up 1 correct result: ', 861);
+
+/*
+Level Up exercise 2: Array.prototype.reduce()
+
+Tallying travel methods using Array.prototype.reduce(). 
+
+Count the number of times each travel method appears in the 'travelMethods'
+array.
+
+- The resulting object should have keys as the travel methods 
+  ('car', 'truck', 'bike', etc.) and values as their respective counts.
+- Store this object in the variable 'travelMethodCounts'.
+
+Hints:
+- Inside the reduce function, check if the travel method already exists as a key
+  in your accumulator object. If it does, increment its count. If not, add it 
+  to the object and give it a value of 1.
+- Since you want to return an object, be sure to pass an empty {} for the 
+  initial value of the "accumulator".
+*/
+
+let travelMethodCounts = {};
+
+// Complete the exercise in the space below:
+console.log(travelMethods);
+
+travelMethodCounts = travelMethods.reduce(function (accumulator, method) {
+  if (accumulator[method]) {
+    accumulator[method] = accumulator[method] + 1;
+  } else {
+    accumulator[method] = 1;
+  }
+  return accumulator;
+}, {});
 
 
-// // Check your work:
-// console.log('Level Up 1 my result: ', totalYearsLived);
-// console.log('Level Up 1 correct result: ', 861);
+
+// Check your work:
+console.log('Level Up 2 my result: ', travelMethodCounts);
+console.log('Level Up 2 correct result: ', {
+  car: 5,
+  truck: 3,
+  bike: 2,
+  walk: 2,
+  van: 2,
+});
